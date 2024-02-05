@@ -1,2 +1,2 @@
-# ConversionTherapy
+# Conversions
 Website for standard conversions
