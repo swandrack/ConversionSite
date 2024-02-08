@@ -22,7 +22,6 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
   }
-
       // Function to handle conversions based on selected options in Measure dropdowns
       function convert() {
         var measure1 = document.querySelector("#measure1 option:checked").textContent;
@@ -31,9 +30,75 @@ function openCity(evt, cityName) {
             var inputMeasure = document.querySelector("#measureInput");
             var measuredInput = inputMeasure.value;
             measuredInput = parseInt(measuredInput);
-            var total = measuredInput * 8;
-            return(total)
-        } else {
-            return(":(")
-        }
+            let total = measuredInput * 8;
+            return total
+        } else if (measure1 === measure2) {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          return measuredInput;
+        } else if (measure1 == "Gallon" && measure2 == "Fluid Ounces") {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          measuredInput = parseInt(measuredInput);
+          let total = measuredInput * 128;
+          return total
+        } else if (measure1 == "Gallon" && measure2 === "Liter") {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          measuredInput = parseInt(measuredInput);
+          let total = measuredInput * 3.78541;
+          return total.toPrecision(7);
+        } else if (measure1 == "Gallon" && measure2 == "Milliliter") {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          measuredInput = parseInt(measuredInput);
+          let total = measuredInput * 3785.41;
+          return total;
+        } else if (measure1 == "Fluid Ounces" && measure2 == "Gallon") {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          measuredInput = parseInt(measuredInput);
+          let total = measuredInput / 128;
+          return total
+        } else if (measure1 == "Fluid Ounces" && measure2 == "Pint") {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          measuredInput = parseInt(measuredInput);
+          let total = measuredInput * 0.0625;
+          return total
+        } else if (measure1 == "Fluid Ounces" && measure2 == "Liter") {
+        var inputMeasure = document.querySelector("#measureInput");
+        var measuredInput = inputMeasure.value;
+        measuredInput = parseInt(measuredInput);
+        let total = measuredInput * 0.0295735;
+        return total.toPrecision(7);
+        } else if (measure1 == "Fluid Ounces" && measure2 == "Milliliter") {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          measuredInput = parseInt(measuredInput);
+          let total = measuredInput * 29.5735;
+          return total.toPrecision(7);
+        } 
+    }
+
+    function handleConvert() {
+        // Call the function and store the result in a variable
+      var totalValue = convert();
+
+      // Find the element where you want to display the total
+      var totalDisplayElement = document.getElementById("result");
+
+      // If statement to destroy created element if it already exists
+      if (totalDisplayElement.firstChild) {
+        totalDisplayElement.removeChild(totalDisplayElement.firstChild)
       }
+
+      // Create a new element to display the total
+      var totalElement = document.createElement("p");
+
+      // Set the text content of the element to the value of the total variable
+      totalElement.textContent = "Total: " + totalValue;
+
+      // Append the total element to the display element
+      totalDisplayElement.appendChild(totalElement);
+    }
