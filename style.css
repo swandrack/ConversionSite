@@ -54,3 +54,7 @@ body {
 option {
     color: #344e41;
 }
+
+#measure3 {
+  visibility: hidden;
+}
