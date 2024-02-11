@@ -27,7 +27,7 @@
     <h3>Liquid Conversions</h3>
     <p>Please select your conversion from the dropdown below</p>
     <div class="conversionTable">
-        <div class="dropdowns">
+        <div class="dropdowns" id="dropdownContainer">
             <select name="Measurement" id="measure1">
                 <option value="gallon">Gallon</option>
                 <option value="pint">Pint</option>
@@ -36,6 +36,7 @@
                 <option value="milliliter">Milliliter</option>
                 <option value="metersCubed">Cubic Meters</option>
                 <option value="feetCubed">Cubic Feet</option>
+                <option value="mass">Mass</option>
             </select>
             <svg xmlns="http://www.w3.org/2000/svg" height="14" width="12.25" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#344e41" d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
             <select name="Measurement" id="measure2">
@@ -46,6 +47,14 @@
                 <option value="milliliter">Milliliter</option>
                 <option value="metersCubed">Cubic Meters</option>
                 <option value="feetCubed">Cubic Feet</option>
+                <option value="mass">Mass</option>
+            </select>
+            <select name="Measurement" id="measure3">
+                <option value="gram">Grams</option>
+                <option value="kilogram">Kilograms</option>
+                <option value="pound">Pounds</option>
+                <option value="ounce">Ounces</option>
+                <option value="ton">Tons</option>
             </select>
         </div>
         <div class="inputFields">
