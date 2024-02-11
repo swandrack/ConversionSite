@@ -22,6 +22,7 @@ function openCity(evt, cityName) {
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
   }
+
       // Function to handle conversions based on selected options in Measure dropdowns
       function convert() {
         var measure1 = document.querySelector("#measure1 option:checked").textContent;
@@ -47,13 +48,13 @@ function openCity(evt, cityName) {
           var measuredInput = inputMeasure.value;
           measuredInput = parseInt(measuredInput);
           let total = measuredInput * 3.78541;
-          return total.toPrecision(7);
+          return total.toPrecision(10);
         } else if (measure1 == "Gallon" && measure2 == "Milliliter") {
           var inputMeasure = document.querySelector("#measureInput");
           var measuredInput = inputMeasure.value;
           measuredInput = parseInt(measuredInput);
           let total = measuredInput * 3785.41;
-          return total;
+          return total.toPrecision(10);
         } else if (measure1 == "Fluid Ounces" && measure2 == "Gallon") {
           var inputMeasure = document.querySelector("#measureInput");
           var measuredInput = inputMeasure.value;
@@ -65,19 +66,53 @@ function openCity(evt, cityName) {
           var measuredInput = inputMeasure.value;
           measuredInput = parseInt(measuredInput);
           let total = measuredInput * 0.0625;
-          return total
+          return total.toPrecision(10);
         } else if (measure1 == "Fluid Ounces" && measure2 == "Liter") {
         var inputMeasure = document.querySelector("#measureInput");
         var measuredInput = inputMeasure.value;
         measuredInput = parseInt(measuredInput);
         let total = measuredInput * 0.0295735;
-        return total.toPrecision(7);
+        return total.toPrecision(10);
         } else if (measure1 == "Fluid Ounces" && measure2 == "Milliliter") {
           var inputMeasure = document.querySelector("#measureInput");
           var measuredInput = inputMeasure.value;
           measuredInput = parseInt(measuredInput);
           let total = measuredInput * 29.5735;
-          return total.toPrecision(7);
+          return total.toPrecision(10);
+        } else if (measure1 == "Fluid Ounces" && measure2 == "Cubic Meters") {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          measuredInput = parseInt(measuredInput);
+          let total = measuredInput * .0000295735;
+          return total.toPrecision(10);
+        } else if (measure1 == "Fluid Ounces" && measure2 == "Cubic Feet") {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          measuredInput = parseInt(measuredInput);
+          let total = measuredInput * 0.00104438;
+          return total.toPrecision(10);
+        } else if (measure1 == "Gallon" && measure2 == "Cubic Feet") {
+          var inputMeasure = document.querySelector("#measureInput");
+          var measuredInput = inputMeasure.value;
+          measuredInput = parseInt(measuredInput);
+          let total = measuredInput * 0.133681;
+          return total.toPrecision(10);
+        } else if (measure1 == "Pint" && measure2 == "Gallon") {
+          var inputMeasure = document.querySelector("#measureInput");
+            var measuredInput = inputMeasure.value;
+            measuredInput = parseInt(measuredInput);
+            let total = measuredInput / 8;
+            return total;
+        } 
+
+         if (measure1 == "Mass" || measure2 == "Mass") {
+          let measureElement = document.querySelector("#measure2")
+          let measureElement2 = document.querySelector("#measure3")
+          measureElement.style.visibility = "hidden";
+          measureElement2.style.visibility = "visible";
+          measureElement.replaceWith(measureElement2);
+          let total = "Please select a mass from the new drop-down";
+          return total;
         } 
     }
 
@@ -97,7 +132,11 @@ function openCity(evt, cityName) {
       var totalElement = document.createElement("p");
 
       // Set the text content of the element to the value of the total variable
+      if (Number.isInteger(totalValue)) {
       totalElement.textContent = "Total: " + totalValue;
+      } else {
+        totalElement.textContent = totalValue;
+      }
 
       // Append the total element to the display element
       totalDisplayElement.appendChild(totalElement);
